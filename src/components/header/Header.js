@@ -314,7 +314,7 @@ function Header() {
                   {activeStep === steps.length - 1 ? (
                     <Button
                       className="button"
-                      disabled={details.about["tan"] === "" ? true : false}
+                      disabled={"tan" in details.about ? false : true}
                     >
                       Make Payment
                     </Button>

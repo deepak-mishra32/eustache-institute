@@ -267,7 +267,7 @@ function AboutMe() {
             <hr />
           </div>
           <Row>
-            <FormLabel required>Past Cosmetic Surgeries/ Procedures:</FormLabel>
+            <FormLabel>Past Cosmetic Surgeries/ Procedures:</FormLabel>
             <Col Col sm={12} md={4} lg={4}>
               <Form.Check
                 label="Rhinoplasty (Nose Job)"
@@ -386,9 +386,7 @@ function AboutMe() {
           </Row>
           <Row className="mt-2">
             <Col Col sm={12} md={12} lg={12}>
-              <FormLabel name="results" required>
-                Results:
-              </FormLabel>
+              <FormLabel name="results">Results:</FormLabel>
               <Form.Check
                 label="Better than Expected"
                 name="results"
