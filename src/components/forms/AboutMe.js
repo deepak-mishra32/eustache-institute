@@ -60,6 +60,7 @@ function AboutMe() {
   };
   const onSubmithandler = (e) => {
     e.preventDefault();
+    window.scrollTo(0, 2);
   };
   const onSavehandler = (e) => {
     console.log(data);
@@ -498,15 +499,14 @@ function AboutMe() {
               />
             </Col>
           </Row>
-          {data.tan === "" ? (
-            <Button className="mt-3" disabled>
-              Save
-            </Button>
-          ) : (
-            <Button type="submit" className="mt-3" onClick={onSavehandler}>
-              Save
-            </Button>
-          )}
+          <Button
+            type="submit"
+            disabled={data.tan === "" ? true : false}
+            className="mt-3"
+            onClick={onSavehandler}
+          >
+            Submit Details
+          </Button>
         </Form>
       </section>
     </div>

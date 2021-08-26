@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       marginTop: "16px",
     },
-    textShadow: "1px 1px 5px #000",
+    textShadow: "2px 2px 6px #000000",
   },
   stepperRow: {
     backgroundColor: "#ffffff",
@@ -95,11 +95,24 @@ const useStyles = makeStyles((theme) => ({
       marginTop: "-16px",
       maxWidth: "66px",
       minHeight: "46px",
+      maxHeight: "62px",
     },
   },
   activeIcon: {
     fill: "#6EC8D3",
     color: "#000000",
+    [theme.breakpoints.down("md")]: {
+      fill: "#6EC8D3",
+      color: "#000000",
+    },
+  },
+  completeIcon: {
+    fill: "#6EC8D3",
+    color: "#000000",
+    [theme.breakpoints.down("md")]: {
+      fill: "#6EC8D3",
+      color: "#000000",
+    },
   },
   activeStepper: {
     backgroundColor: "#000000",
@@ -208,17 +221,13 @@ function Header() {
               connector={null}
             >
               {steps.map((label) => (
-                <Step
-                  key={label}
-                  classes={{
-                    active: classes.activeStepper,
-                  }}
-                >
+                <Step key={label}>
                   <StepLabel
                     className={classes.stepperRow}
                     StepIconProps={{
                       classes: {
                         active: classes.activeIcon,
+                        completed: classes.completeIcon,
                       },
                     }}
                   >
@@ -303,18 +312,24 @@ function Header() {
                     Back
                   </Button>
                   {activeStep === steps.length - 1 ? (
-                    <Button className="button" disabled>
-                      Finished
+                    <Button
+                      className="button"
+                      disabled={details.about["tan"] === "" ? true : false}
+                    >
+                      Make Payment
                     </Button>
                   ) : (
                     <Button
                       className="button"
                       onClick={handleNext}
                       disabled={
-                        (details.concerns.length === 0 && !isNext) ||
-                        (details.concerns.length > 0 &&
-                          details.price === 0 &&
-                          !isNext)
+                        activeStep === 0
+                          ? details.concerns.length === 0
+                            ? true
+                            : false
+                          : details.price !== ""
+                          ? false
+                          : true
                       }
                     >
                       Next
