@@ -1,0 +1,14 @@
+.row {
+  padding: 16px;
+}
+.menu {
+  display: flex;
+  text-align: center;
+}
+.brand-adv img {
+  height: 66px;
+  margin: 18px;
+  @media (min-width: 900) {
+    height: 18px;
+  }
+}

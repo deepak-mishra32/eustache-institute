@@ -1,0 +1,139 @@
+section {
+  margin-top: 16px;
+}
+
+section p {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.cosmentic-concern {
+  height: 20vh;
+  border: 1px solid #444444;
+  margin: 8px 0px;
+}
+
+.cosmentic-concern p {
+  text-align: center;
+}
+
+.modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.paper {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  -webkit-box-shadow: 2px 5px 6px #000000;
+          box-shadow: 2px 5px 6px #000000;
+  width: 556px;
+}
+
+.disclaimer {
+  margin: 8px;
+  padding: 8px;
+  background-color: #6ec8d3;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.disclaimer-text {
+  padding: 8px;
+  scroll-behavior: smooth;
+}
+
+.concerns {
+  border: 1px solid #444444;
+  padding: 8px;
+  text-align: center;
+}
+
+.concerns h3 {
+  margin-top: 16px;
+  color: #32a8b8;
+}
+
+.concerns p {
+  padding: 8px 0px;
+}
+
+.button {
+  background-color: #eff1f1;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #444444;
+  -webkit-box-shadow: 1px 1px 3px 2px #5f5d5d;
+          box-shadow: 1px 1px 3px 2px #5f5d5d;
+}
+
+.button:focus {
+  border: none;
+  outline: none;
+}
+
+.button-div {
+  margin: 8px 0px;
+}
+
+.button-div .button {
+  background-color: #444444;
+}
+
+.button-div .button:hover {
+  background-color: #444444;
+}
+
+.button-div .button:focus {
+  background-color: #444444;
+  border: none;
+  outline: none;
+}
+
+.button-div .button:hover {
+  -webkit-box-shadow: 1px 1px 3px 2px #5f5d5d;
+          box-shadow: 1px 1px 3px 2px #5f5d5d;
+}
+
+area {
+  background: #000000;
+  display: block;
+  opacity: 0;
+  position: absolute;
+}
+
+area:hover {
+  border: 2px solid black;
+  opacity: 0.2;
+}
+
+.cosmentic-concern {
+  background-color: #f5f5f5;
+}
+
+.body-img {
+  height: 956px;
+}
+
+@media (max-width: 900) {
+  .body-img {
+    height: 556px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gender-view {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Concerns.css.map */

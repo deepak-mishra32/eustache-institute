@@ -1,0 +1,20 @@
+.concernpart {
+  background-color: #6ec8d3;
+  padding: 4px 8px;
+  text-align: center;
+  margin-top: 36px;
+  display: block;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+}
+
+.eye-btn:hover {
+  cursor: pointer;
+}
+
+.expand-div {
+  margin-left: 10%;
+}
+/*# sourceMappingURL=Parts.css.map */

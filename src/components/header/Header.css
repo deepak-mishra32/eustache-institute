@@ -1,0 +1,22 @@
+.row {
+  padding: 16px;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+
+.brand-adv img {
+  height: 66px;
+  margin: 18px;
+}
+
+@media (min-width: 900) {
+  .brand-adv img {
+    height: 18px;
+  }
+}
+/*# sourceMappingURL=Header.css.map */

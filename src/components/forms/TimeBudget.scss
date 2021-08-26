@@ -1,0 +1,19 @@
+.info {
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+}
+.budgetP {
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+}
+.sliderDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 900px) {
+    display: block;
+    font-size: 16px;
+  }
+}
