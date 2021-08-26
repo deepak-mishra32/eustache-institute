@@ -1164,7 +1164,7 @@ export const MAPMALEFRONTMB = {
       fillColor: "#6ec7d38e",
     },
     {
-      name: "forehead",
+      name: "head",
       shape: "rect",
       coords: [88, 1, 130, 14],
       fillColor: "#6ec7d38e",
