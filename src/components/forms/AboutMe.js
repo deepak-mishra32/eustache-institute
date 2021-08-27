@@ -7,6 +7,9 @@ import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Context from "../../Context";
 import emailjs from "emailjs-com";
+import "./AboutMe.css";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 import { getNewStateOneValue } from "../utils";
 
@@ -40,6 +43,8 @@ function AboutMe() {
   const [other, setOther] = useState(false);
   const { addDetails } = useContext(Context);
   const { details } = useContext(Context);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const onChangehandler = (e) => {
     setData((prevState) => {
@@ -62,7 +67,9 @@ function AboutMe() {
   };
 
   const onSaveHandler = () => {
-    window.scrollTo(0, 2);
+    {
+      matches ? window.scrollToBottom() : window.scrollTo(0, 2);
+    }
     console.log(data);
     console.log(details);
   };
@@ -517,16 +524,66 @@ function AboutMe() {
             </Col>
           </Row>
           <Row>
-            <Col sm={12} md={12} lg={12}>
-              <Form.Label column sm="2">
-                Body Part
-              </Form.Label>
+            <hr className="hr-mobile" />
+            <Col sm={12} md={4} lg={4}>
+              <Form.Label>Concerned Body Part</Form.Label>
               <Form.Control
-                plaintext
                 readOnly
                 name="bodypart"
-                defaultValue={details.bodyPart}
+                defaultValue={
+                  details.bodyPart.charAt(0).toUpperCase() +
+                  details.bodyPart.slice(1)
+                }
               />
+            </Col>
+            {details.concerns.length > 1 ? (
+              <>
+                <Col sm={12} md={4} lg={4}>
+                  <hr className="hr-mobile" />
+                  <Form.Label>1st Concern</Form.Label>
+                  <Form.Control
+                    readOnly
+                    name="concerns1"
+                    defaultValue={details.concerns[0]}
+                    style={{ wordWrap: "break-word" }}
+                  />
+                </Col>
+                <Col sm={12} md={4} lg={4}>
+                  <hr className="hr-mobile" />
+                  <Form.Label>2nd Concern</Form.Label>
+                  <Form.Control
+                    readOnly
+                    name="concerns2"
+                    defaultValue={details.concerns[1]}
+                    style={{ wordWrap: "break-word" }}
+                  />
+                </Col>
+              </>
+            ) : (
+              <Col sm={12} md={4} lg={4}>
+                <hr className="hr-mobile" />
+                <Form.Label>Concern</Form.Label>
+                <Form.Control
+                  readOnly
+                  name="concerns1"
+                  defaultValue={details.concerns}
+                  style={{ wordWrap: "break-word" }}
+                />
+              </Col>
+            )}
+            <Col sm={12} md={4} lg={4} className={matches ? null : "mt-2"}>
+              <hr className="hr-mobile" />
+              <Form.Label>Budget</Form.Label>
+              <Form.Control
+                readOnly
+                name="price"
+                defaultValue={"$" + details.price + "000"}
+              />
+            </Col>
+            <Col sm={12} md={4} lg={4} className={matches ? null : "mt-2"}>
+              <hr className="hr-mobile" />
+              <Form.Label>Time</Form.Label>
+              <Form.Control readOnly name="time" defaultValue={details.time} />
             </Col>
           </Row>
           <Button
