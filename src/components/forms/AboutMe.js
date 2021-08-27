@@ -70,26 +70,15 @@ function AboutMe() {
     {
       matches ? window.scrollToBottom() : window.scrollTo(0, 2);
     }
-    console.log(data);
-    console.log(details);
   };
   function sendEmail(e) {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_0kzr3xd",
-        "template_7dzcsjo",
-        e.target,
-        "user_CjqZZjVQyTkyTa4v20eiP"
-      )
-      .then(
-        (result) => {
-          console.log("OK");
-        },
-        (error) => {
-          console.log("error");
-        }
-      );
+    emailjs.sendForm(
+      "service_0kzr3xd",
+      "template_7dzcsjo",
+      e.target,
+      "user_CjqZZjVQyTkyTa4v20eiP"
+    );
   }
 
   return (
