@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Context from "../../Context";
+import emailjs from "emailjs-com";
+
 import { getNewStateOneValue } from "../utils";
 
 function AboutMe() {
@@ -21,7 +23,7 @@ function AboutMe() {
     state: "",
     fitness: "Normal Weight",
     city: "",
-    surgeries: "",
+    surgeries: "No",
     pastCosmeticSurgeries: [],
     liposuctionBodypart: "",
     OtherSurgeries: "",
@@ -37,11 +39,11 @@ function AboutMe() {
   const [liposuction, setLiposuction] = useState(false);
   const [other, setOther] = useState(false);
   const { addDetails } = useContext(Context);
+  const { details } = useContext(Context);
 
   const onChangehandler = (e) => {
     setData((prevState) => {
       const targetName = prevState[e.target.name];
-      console.log(targetName);
       addDetails(
         {
           ...prevState,
@@ -58,19 +60,36 @@ function AboutMe() {
   const changeHandler = (country) => {
     setCountry(country);
   };
-  const onSubmithandler = (e) => {
-    e.preventDefault();
+
+  const onSaveHandler = () => {
     window.scrollTo(0, 2);
-  };
-  const onSavehandler = (e) => {
     console.log(data);
+    console.log(details);
   };
-  console.log(data);
+  function sendEmail(e) {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_0kzr3xd",
+        "template_7dzcsjo",
+        e.target,
+        "user_CjqZZjVQyTkyTa4v20eiP"
+      )
+      .then(
+        (result) => {
+          console.log("OK");
+        },
+        (error) => {
+          console.log("error");
+        }
+      );
+  }
+
   return (
     <div>
       <h5>About Me and Medical History</h5>
       <section>
-        <Form className="p-4" onSubmit={onSubmithandler}>
+        <Form className="p-4" onSubmit={sendEmail}>
           <div>
             <p>Personal Information</p> <hr />
             <Row className="mb-3">
@@ -251,7 +270,7 @@ function AboutMe() {
                   type="radio"
                   label="Yes"
                   name="surgeries"
-                  value="yes"
+                  value="Yes"
                   defaultChecked
                   onChange={onChangehandler}
                 />
@@ -497,11 +516,24 @@ function AboutMe() {
               />
             </Col>
           </Row>
+          <Row>
+            <Col sm={12} md={12} lg={12}>
+              <Form.Label column sm="2">
+                Body Part
+              </Form.Label>
+              <Form.Control
+                plaintext
+                readOnly
+                name="bodypart"
+                defaultValue={details.bodyPart}
+              />
+            </Col>
+          </Row>
           <Button
             type="submit"
             disabled={data.tan === "" ? true : false}
             className="mt-3"
-            onClick={onSavehandler}
+            onClick={onSaveHandler}
           >
             Submit Details
           </Button>

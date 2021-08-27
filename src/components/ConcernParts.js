@@ -33,7 +33,6 @@ function ConcernParts() {
     addDetails("", "bodyPart");
   };
 
-  console.log(part);
   return (
     <section className="concerns-parts">
       <Row>

@@ -1,4 +1,4 @@
-import { React, useState, useMemo, useContext, useEffect } from "react";
+import { React, useState, useMemo, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -133,7 +133,6 @@ function Header() {
   const [open, setOpen] = useState(true);
   const [disclaimerOpen, setDisclaimerOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  const [isNext, setIsnext] = useState(false);
   const steps = getSteps();
   const [country, setCountry] = useState("");
   const options = useMemo(() => countryList().getData(), []);
@@ -163,10 +162,6 @@ function Header() {
   const changeHandler = (country) => {
     setCountry(country);
   };
-
-  useEffect(() => {
-    setIsnext(false);
-  }, [activeStep]);
 
   return (
     <>
