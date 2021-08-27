@@ -560,7 +560,7 @@ function AboutMe() {
                 />
               </Col>
             )}
-            <Col sm={12} md={4} lg={4} className={matches ? null : "mt-2"}>
+            <Col sm={12} md={4} lg={4} className={matches ? "mt-2" : null}>
               <hr className="hr-mobile" />
               <Form.Label>Budget</Form.Label>
               <Form.Control
