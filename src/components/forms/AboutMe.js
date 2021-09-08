@@ -570,19 +570,20 @@ function AboutMe() {
               <Form.Control readOnly name="time" defaultValue={details.time} />
             </Col>
           </Row>
-          <a
-            href="http://eustacheinstitute.com/form/"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <Button
+            type="submit"
+            disabled={data.tan === "" ? true : false}
+            className="mt-3"
           >
-            <Button
-              type="submit"
-              disabled={data.tan === "" ? true : false}
-              className="mt-3"
+            <a
+              href="http://eustacheinstitute.com/form/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Next
-            </Button>
-          </a>
+            </a>
+          </Button>
         </Form>
       </section>
     </div>
