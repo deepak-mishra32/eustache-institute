@@ -115,7 +115,7 @@ function ConcernParts() {
         <Col sm={6} md={6} lg={8}>
           {details.concerns.map((concern) => (
             <ul>
-              <li>{concern}</li>
+              <li key={concern}>{concern}</li>
             </ul>
           ))}
         </Col>

@@ -13,6 +13,14 @@ section {
     text-align: center;
   }
 }
+#dropdown-basic-button {
+  background-color: #6ec8d3;
+  color: #000000;
+  &:focus {
+    border: none;
+  }
+}
+
 .modal {
   display: flex;
   align-items: center;

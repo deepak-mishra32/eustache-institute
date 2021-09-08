@@ -170,7 +170,7 @@ function Header() {
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           className={classes.modal}
-          open={open}
+          open={false}
           onClose={open}
           closeAfterTransition
           BackdropComponent={Backdrop}
@@ -299,37 +299,36 @@ function Header() {
             <div className="button-div">
               <div>
                 <div style={{ textAlign: "center" }}>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={classes.backButton}
-                  >
-                    Back
-                  </Button>
-                  {activeStep === steps.length - 1 ? (
-                    <Button
-                      className="button"
-                      disabled={"tan" in details.about ? false : true}
-                    >
-                      Make Payment
-                    </Button>
+                  {activeStep === 0 ? (
+                    <a href="http://eustacheinstitute.com/">
+                      <Button className={classes.backButton}>Back</Button>
+                    </a>
                   ) : (
                     <Button
-                      className="button"
-                      onClick={handleNext}
-                      disabled={
-                        activeStep === 0
-                          ? details.concerns.length === 0
-                            ? true
-                            : false
-                          : details.price !== ""
-                          ? false
-                          : true
-                      }
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      className={classes.backButton}
                     >
-                      Next
+                      Back
                     </Button>
                   )}
+
+                  <Button
+                    className="button"
+                    onClick={handleNext}
+                    disabled={
+                      activeStep === 0
+                        ? details.concerns.length === 0
+                          ? true
+                          : false
+                        : details.price !== ""
+                        ? false
+                        : true
+                    }
+                    hidden={activeStep === steps.length - 1 ? true : false}
+                  >
+                    Next
+                  </Button>
                 </div>
               </div>
             </div>

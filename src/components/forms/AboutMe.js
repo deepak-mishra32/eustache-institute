@@ -66,11 +66,6 @@ function AboutMe() {
     setCountry(country);
   };
 
-  const onSaveHandler = () => {
-    {
-      matches ? window.scrollToBottom() : window.scrollTo(0, 2);
-    }
-  };
   function sendEmail(e) {
     e.preventDefault();
     emailjs.sendForm(
@@ -575,14 +570,19 @@ function AboutMe() {
               <Form.Control readOnly name="time" defaultValue={details.time} />
             </Col>
           </Row>
-          <Button
-            type="submit"
-            disabled={data.tan === "" ? true : false}
-            className="mt-3"
-            onClick={onSaveHandler}
+          <a
+            href="http://eustacheinstitute.com/form/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Submit Details
-          </Button>
+            <Button
+              type="submit"
+              disabled={data.tan === "" ? true : false}
+              className="mt-3"
+            >
+              Next
+            </Button>
+          </a>
         </Form>
       </section>
     </div>
