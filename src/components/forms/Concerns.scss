@@ -103,12 +103,7 @@ area {
   @media (max-width: 900) {
     height: 556px;
   }
-  @media (min-width: 100) {
-  }
-  height: 956px;
-}
-.gender-view {
-  @media (min-width: 768px) {
-    display: none;
+  @media (min-width: 1000) {
+    height: 956px;
   }
 }
