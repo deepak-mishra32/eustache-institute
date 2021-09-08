@@ -23,6 +23,7 @@ import hippa from "../assets/hippa-logo.png";
 import ssl from "../assets/ssl.png";
 import secure from "../assets/secure1.png";
 import "./Header.css";
+import logo from "../assets/logo.png";
 
 const useStyles = makeStyles((theme) => ({
   backButton: {
@@ -73,13 +74,14 @@ const useStyles = makeStyles((theme) => ({
   },
   row: {
     backgroundColor: "#6EC8D3",
+    margin: "-12px",
   },
   doc: {
     marginTop: "56px",
     textAlign: "center",
     color: "#ffffff",
     [theme.breakpoints.down("md")]: {
-      marginTop: "16px",
+      margin: "8px",
     },
     textShadow: "2px 2px 6px #000000",
   },
@@ -203,12 +205,17 @@ function Header() {
       </div>
       <Container fluid>
         <Row className={classes.row}>
-          <Col sm={12} md={3} lg={3} className={classes.doc}>
-            <div>
-              <h3>EUSTACHE INSTITUTE</h3>
-            </div>
+          <Col sm={2} md={2} lg={2} className={classes.doc}>
+            <a href="http://eustacheinstitute.com/">
+              <img src={logo} alt="logo" className="logo-img" />
+            </a>
           </Col>
-          <Col sm={12} md={9} lg={9}>
+          <Col sm={12} md={3} lg={3} className={classes.doc}>
+            <h3>
+              <a href="http://eustacheinstitute.com/" id="anchor">EUSTACHE INSTITUTE</a>
+            </h3>
+          </Col>
+          <Col sm={12} md={7} lg={7}>
             <Stepper
               className={classes.row}
               activeStep={activeStep}

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+
 .row {
   padding: 16px;
 }
@@ -11,4 +13,18 @@
   @media (min-width: 900) {
     height: 18px;
   }
+}
+.logo-img {
+  margin-top: -66px;
+  height: 156px;
+  margin-left: 36px;
+  filter: drop-shadow(0 0 5px #000000);
+  @media (max-width: 956px) {
+    display: none;
+  }
+}
+#anchor {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Philosopher", sans-serif;
 }
