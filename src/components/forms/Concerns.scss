@@ -14,11 +14,13 @@ section {
   }
 }
 #dropdown-basic-button {
-  background-color: #6ec8d3;
+  // background-color: #6ec8d3;
+  background-color: #ffffff;
   color: #000000;
-  &:focus {
-    border: none;
-  }
+  border-radius: 50px;
+  padding: 8px 16px;
+  box-shadow: 8px 8px 5px 1px rgba(0, 0, 255, 0.2);
+  border: 1px solid #6ec8d3;
 }
 
 .modal {

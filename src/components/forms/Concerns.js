@@ -88,7 +88,7 @@ function Concerns() {
   return (
     <Container fluid className="mt-1">
       <Row>
-        <Col sm={12} md={6} lg={6} style={{ marginLeft: "16px" }}>
+        <Col sm={12} md={6} lg={6}>
           {gender === "Male" ? (
             view === "Front View" ? (
               <ImageMapper

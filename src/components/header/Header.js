@@ -24,6 +24,8 @@ import ssl from "../assets/ssl.png";
 import secure from "../assets/secure1.png";
 import "./Header.css";
 import logo from "../assets/logo.png";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   backButton: {
@@ -139,6 +141,8 @@ function Header() {
   const [country, setCountry] = useState("");
   const options = useMemo(() => countryList().getData(), []);
   const { details } = useContext(Context);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const disclaimerOpenhandler = () => {
     setDisclaimerOpen(true);
@@ -205,14 +209,16 @@ function Header() {
       </div>
       <Container fluid>
         <Row className={classes.row}>
-          <Col sm={2} md={2} lg={2} className={classes.doc}>
+          <Col sm={12} md={2} lg={2} className={classes.doc}>
             <a href="http://eustacheinstitute.com/">
               <img src={logo} alt="logo" className="logo-img" />
             </a>
           </Col>
           <Col sm={12} md={3} lg={3} className={classes.doc}>
             <h3>
-              <a href="http://eustacheinstitute.com/" id="anchor">EUSTACHE INSTITUTE</a>
+              <a href="http://eustacheinstitute.com/" id="anchor">
+                EUSTACHE INSTITUTE
+              </a>
             </h3>
           </Col>
           <Col sm={12} md={7} lg={7}>
@@ -245,9 +251,132 @@ function Header() {
       <Container>
         <Row>
           <Col sm={12} md={8} lg={8} className="mt-1">
-            {activeStep === 0 ? <Concerns /> : null}
-            {activeStep === 1 ? <TimeBudget /> : null}
-            {activeStep === 2 ? <AboutMe /> : null}
+            {activeStep === 0 ? (
+              <>
+                <Concerns />
+                <div
+                  className="button-div"
+                  style={{ marginLeft: matches ? null : "256px" }}
+                >
+                  <div>
+                    <div style={{ textAlign: "center" }}>
+                      {activeStep === 0 ? (
+                        <a href="http://eustacheinstitute.com/">
+                          <Button className={classes.backButton}>Back</Button>
+                        </a>
+                      ) : (
+                        <Button
+                          disabled={activeStep === 0}
+                          onClick={handleBack}
+                          className={classes.backButton}
+                        >
+                          Back
+                        </Button>
+                      )}
+
+                      <Button
+                        className="button"
+                        onClick={handleNext}
+                        disabled={
+                          activeStep === 0
+                            ? details.concerns.length === 0
+                              ? true
+                              : false
+                            : details.price !== ""
+                            ? false
+                            : true
+                        }
+                        hidden={activeStep === steps.length - 1 ? true : false}
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : null}
+            {activeStep === 1 ? (
+              <>
+                <TimeBudget />
+                <div className="button-div">
+                  <div>
+                    <div style={{ textAlign: "center" }}>
+                      {activeStep === 0 ? (
+                        <a href="http://eustacheinstitute.com/">
+                          <Button className={classes.backButton}>Back</Button>
+                        </a>
+                      ) : (
+                        <Button
+                          disabled={activeStep === 0}
+                          onClick={handleBack}
+                          className={classes.backButton}
+                        >
+                          Back
+                        </Button>
+                      )}
+
+                      <Button
+                        className="button"
+                        onClick={handleNext}
+                        disabled={
+                          activeStep === 0
+                            ? details.concerns.length === 0
+                              ? true
+                              : false
+                            : details.price !== ""
+                            ? false
+                            : true
+                        }
+                        hidden={activeStep === steps.length - 1 ? true : false}
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : null}
+            {activeStep === 2 ? (
+              <>
+                <AboutMe />{" "}
+                <div className="button-div">
+                  <div>
+                    <div style={{ textAlign: "center" }}>
+                      {activeStep === 0 ? (
+                        <a href="http://eustacheinstitute.com/">
+                          <Button className={classes.backButton}>Back</Button>
+                        </a>
+                      ) : (
+                        <Button
+                          disabled={activeStep === 0}
+                          onClick={handleBack}
+                          className={classes.backButton}
+                        >
+                          Back
+                        </Button>
+                      )}
+
+                      <Button
+                        className="button"
+                        onClick={handleNext}
+                        disabled={
+                          activeStep === 0
+                            ? details.concerns.length === 0
+                              ? true
+                              : false
+                            : details.price !== ""
+                            ? false
+                            : true
+                        }
+                        hidden={activeStep === steps.length - 1 ? true : false}
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : null}
           </Col>
           <Col sm={12} md={4} lg={4} className="mt-4">
             <div className="concerns">
@@ -291,6 +420,7 @@ function Header() {
                       <p className="disclaimer-text">{disclaimer}</p>
                       <Button
                         onClick={() => setDisclaimerOpen(false)}
+                        className="disc-color"
                         style={{
                           margin: "8px",
                           display: "block",
@@ -301,42 +431,6 @@ function Header() {
                     </div>
                   </Fade>
                 </Modal>
-              </div>
-            </div>
-            <div className="button-div">
-              <div>
-                <div style={{ textAlign: "center" }}>
-                  {activeStep === 0 ? (
-                    <a href="http://eustacheinstitute.com/">
-                      <Button className={classes.backButton}>Back</Button>
-                    </a>
-                  ) : (
-                    <Button
-                      disabled={activeStep === 0}
-                      onClick={handleBack}
-                      className={classes.backButton}
-                    >
-                      Back
-                    </Button>
-                  )}
-
-                  <Button
-                    className="button"
-                    onClick={handleNext}
-                    disabled={
-                      activeStep === 0
-                        ? details.concerns.length === 0
-                          ? true
-                          : false
-                        : details.price !== ""
-                        ? false
-                        : true
-                    }
-                    hidden={activeStep === steps.length - 1 ? true : false}
-                  >
-                    Next
-                  </Button>
-                </div>
               </div>
             </div>
           </Col>
