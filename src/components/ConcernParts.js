@@ -22,11 +22,15 @@ import palms from "./assets/concerns/palms.png";
 import sidefat from "./assets/concerns/sidefat.png";
 import thigs from "./assets/concerns/thigs.png";
 import buttocks from "./assets/concerns/buttocks.JPG";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 function ConcernParts() {
   const { addDetails } = useContext(Context);
   const { details } = useContext(Context);
   const part = details.bodyPart;
+  const theme = useTheme();
+  const matchesMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const onDeletehandler = (e) => {
     addDetails([], "concerns");
@@ -109,10 +113,10 @@ function ConcernParts() {
       </Row>
       <hr />
       <Row>
-        <Col sm={6} md={6} lg={4}>
+        <Col sm={12} md={4} lg={4}>
           <h6>Concerns:</h6>
         </Col>
-        <Col sm={6} md={6} lg={8}>
+        <Col sm={12} md={8} lg={8}>
           {details.concerns.map((concern) => (
             <ul>
               <li key={concern}>{concern}</li>

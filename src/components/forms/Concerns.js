@@ -68,6 +68,8 @@ function Concerns() {
   const { details } = useContext(Context);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMd = useMediaQuery(theme.breakpoints.up("sm"));
+  const matcheslg = useMediaQuery(theme.breakpoints.down("lg"));
 
   const handleClose = () => {
     setOpen(false);
@@ -88,7 +90,12 @@ function Concerns() {
   return (
     <Container fluid className="mt-1">
       <Row>
-        <Col sm={12} md={6} lg={6}>
+        <Col
+          sm={12}
+          md={6}
+          lg={6}
+          style={{ marginLeft: matchesMd && matcheslg ? "-78px" : null }}
+        >
           {gender === "Male" ? (
             view === "Front View" ? (
               <ImageMapper
@@ -96,7 +103,6 @@ function Concerns() {
                 map={matches ? MAPMALEFRONTMB : MAPMALEFRONT}
                 name="my-map"
                 onClick={(area) => onAreaClickhandler(area)}
-                className="body-img"
                 height={matches ? 500 : 756}
               />
             ) : (
@@ -162,9 +168,19 @@ function Concerns() {
             </div>
           ) : null}
         </Col>
-        <Col sm={12} md={6} lg={6}>
+        <Col
+          sm={12}
+          md={6}
+          lg={6}
+          style={{ marginLeft: matchesMd && matcheslg ? "58px" : null }}
+        >
           <Row>
-            <Col sm={12} md={6} lg={6}>
+            <Col
+              sm={12}
+              md={6}
+              lg={6}
+              style={{ marginLeft: matchesMd && matcheslg ? "-38px" : null }}
+            >
               <DropdownButton
                 id="dropdown-basic-button"
                 title={gender}
@@ -186,7 +202,12 @@ function Concerns() {
                 </Dropdown.Item>
               </DropdownButton>
             </Col>
-            <Col sm={12} md={6} lg={6}>
+            <Col
+              sm={12}
+              md={6}
+              lg={6}
+              style={{ marginLeft: matchesMd && matcheslg ? "28px" : null }}
+            >
               <DropdownButton id="dropdown-basic-button" title={view}>
                 <Dropdown.Item
                   className="gender-view"

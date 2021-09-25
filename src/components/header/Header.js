@@ -83,7 +83,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "#ffffff",
     [theme.breakpoints.down("md")]: {
-      margin: "8px",
+      // marginTop: "8px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "8px",
     },
     textShadow: "2px 2px 6px #000000",
   },
@@ -96,11 +99,17 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "136px",
     boxShadow: "inset 3px 4px 5px #000",
     [theme.breakpoints.down("md")]: {
-      marginTop: "-16px",
+      marginTop: "16px",
       maxWidth: "66px",
       minHeight: "46px",
       maxHeight: "62px",
     },
+    // [theme.breakpoints.down("sm")]: {
+    //   // marginTop: "-16px",
+    //   // maxWidth: "66px",
+    //   minHeight: "46px",
+    //   maxHeight: "62px",
+    // },
   },
   activeIcon: {
     fill: "#6EC8D3",
@@ -143,6 +152,8 @@ function Header() {
   const { details } = useContext(Context);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+  const matchesMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const disclaimerOpenhandler = () => {
     setDisclaimerOpen(true);
@@ -176,7 +187,7 @@ function Header() {
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           className={classes.modal}
-          open={open}
+          open={false}
           onClose={open}
           closeAfterTransition
           BackdropComponent={Backdrop}
@@ -211,10 +222,27 @@ function Header() {
         <Row className={classes.row}>
           <Col sm={12} md={2} lg={2} className={classes.doc}>
             <a href="http://eustacheinstitute.com/">
-              <img src={logo} alt="logo" className="logo-img" />
+              <img
+                src={logo}
+                alt="logo"
+                className="logo-img"
+                style={{
+                  display: matchesSmUp && matchesMd ? "block" : null,
+                  height: matchesSmUp && matchesMd ? "58px" : "136px",
+                  marginTop: matchesSmUp && matchesMd ? "18px" : "-56px",
+                }}
+              />
             </a>
           </Col>
-          <Col sm={12} md={3} lg={3} className={classes.doc}>
+          <Col
+            sm={12}
+            md={3}
+            lg={3}
+            className={classes.doc}
+            style={{
+              marginTop: matchesMd ? "28px" : null,
+            }}
+          >
             <h3>
               <a href="http://eustacheinstitute.com/" id="anchor">
                 EUSTACHE INSTITUTE
