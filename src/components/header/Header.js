@@ -187,7 +187,7 @@ function Header() {
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           className={classes.modal}
-          open={false}
+          open={open}
           onClose={open}
           closeAfterTransition
           BackdropComponent={Backdrop}
